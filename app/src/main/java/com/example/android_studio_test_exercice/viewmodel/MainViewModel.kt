@@ -28,6 +28,30 @@ class MainViewModel: ViewModel {
     private val _selectedOption: MutableLiveData<String>
     public val selectedOption: LiveData<String>
 
+    private val _sliderValue: MutableLiveData<Float>
+
+    public val sliderValue: LiveData<Float>
+
+    private val _expanded: MutableLiveData<Boolean>
+
+    public val expanded: LiveData<Boolean>
+
+    private val _selectedItem: MutableLiveData<String>
+
+    public val selectedItem: LiveData<String>
+
+    private val _searchText: MutableLiveData<String>
+
+    public val searchText: LiveData<String>
+
+    private val _showSnackbar: MutableLiveData<Boolean>
+
+    public val showSnackbar: LiveData<Boolean>
+
+    private val _toggleState: MutableLiveData<Boolean>
+
+    public val toggleState: LiveData<Boolean>
+
     /**
      * Constructor de la classe HelloViewModel
      * que inicialitzen els atributs
@@ -50,6 +74,24 @@ class MainViewModel: ViewModel {
 
         this._selectedOption = MutableLiveData<String>("Messi")
         this.selectedOption = this._selectedOption
+
+        this._sliderValue = MutableLiveData<Float>(0f)
+        this.sliderValue = this._sliderValue
+
+        this._expanded = MutableLiveData<Boolean>(false)
+        this.expanded = this._expanded
+
+        this._selectedItem = MutableLiveData<String>("Opció A")
+        this.selectedItem = this._selectedItem
+
+        this._searchText = MutableLiveData<String>("")
+        this.searchText = this._searchText
+
+        this._showSnackbar = MutableLiveData<Boolean>(false)
+        this.showSnackbar = this._showSnackbar
+
+        this._toggleState = MutableLiveData<Boolean>(false)
+        this.toggleState = this._toggleState
     }
 
     fun toggleEstatSwitch(){
@@ -58,6 +100,14 @@ class MainViewModel: ViewModel {
 
     fun toggleEsCarnivor(){
         this._esCarnivor.value = !(this._esCarnivor.value)!!
+    }
+
+    fun toggleEsVegetaria(){
+        this._esVegetaria.value = !(this._esVegetaria.value)!!
+    }
+
+    fun toggleEsVega(){
+        this._esVega.value = !(this._esVega.value)!!
     }
 
     fun toggleTriStateStatus(){
@@ -71,5 +121,33 @@ class MainViewModel: ViewModel {
 
     private fun setTriStateStatus(triState: ToggleableState){
         this._triStateStatus.value = triState
+    }
+
+    fun setSelectedOption(option: String) {
+        this._selectedOption.value = option
+    }
+
+    fun setSliderValue(value: Float) {
+        this._sliderValue.value = value
+    }
+
+    fun setExpanded(value: Boolean) {
+        this._expanded.value = value
+    }
+
+    fun setSelectedItem(item: String) {
+        this._selectedItem.value = item
+    }
+
+    fun setSearchText(text: String) {
+        this._searchText.value = text
+    }
+
+    fun performSearch() {
+        this._showSnackbar.value = true
+    }
+
+    fun toggle() {
+        this._toggleState.value = !(this._toggleState.value)!!
     }
 }
